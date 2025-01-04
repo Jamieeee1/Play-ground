@@ -1,40 +1,61 @@
 const hours = document.getElementById('hours');
 const minutes = document.getElementById('minutes');
-const seconds = document.getElementById('seconds');
+let seconds = document.getElementById('seconds');
+let timer = null
 
-    let h = parseInt(hours.value);
-    let m = parseInt(minutes.value);
-    let s = JSON.parse(seconds.value)
 
+    
 function countdown() {
-    s -= 1
-    console.log(s)
+    let s = parseInt(seconds.value)
+    let m = parseInt(minutes.value);
+    let h = parseInt(hours.value);
+    if(h>=0){
 
+        if (m>=0) {
+
+            if (s>0) {
+                s = s-1
+                if (s<10) {
+                    seconds.value = "0"+s;
+                } 
+                else {
+                    seconds.value = s;
+                }  
+            } 
+            else if (s==0) {
+                s = 60
+                s = s-1
+                if (s<10) {
+                    seconds.value = "0"+s;
+                } 
+                else {
+                    seconds.value = s;
+                }  
+            } 
+        }
+    }
+    console.log(h)
+    if (s>0) {
+        s = s-1
+        if (s<10) {
+            seconds.value = "0"+s;
+        } 
+        else {
+            seconds.value = s;
+        }
+        if(s==0) {
+            window.alert("Time up")
+        }     
+    } 
     
     
-    // if (h==0 && m == 0) {
-    //     s -= 1
-    // } else if (h==0) {
-    //     if(s==0) {
-    //         s = 60
-    //     } else{
-    //         s -= 1
-    //     }
-    // } else {
-    //     if (s == 0) {
-    //         s = 60
-    //         while (s>0) {
-    //             s -= 1
-    //         } 
-    //     }
-    // }
-
 }
 
 function startTime () {
-    if (seconds.value) {
-        setInterval(countdown, 1000) 
-    } else {
+    if (seconds.value || minutes.value || hours.value) {
+        timer = setInterval(countdown, 1000) 
+    } 
+    else {
         window.alert("Input valid number of seconds")
     }
 }
