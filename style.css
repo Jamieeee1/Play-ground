@@ -54,6 +54,7 @@ body {
 
 .input {
     margin-left: 10px;
+    display: flex;
 }
 
 .input input{

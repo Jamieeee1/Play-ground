@@ -3,56 +3,48 @@ const minutes = document.getElementById('minutes');
 let seconds = document.getElementById('seconds');
 let timer = null
 
-
     
 function countdown() {
     let s = parseInt(seconds.value)
     let m = parseInt(minutes.value);
-    let h = parseInt(hours.value);
-    if(h>=0){
+    let h = parseFloat(hours.value);
 
-        if (m>=0) {
+    if (h||m||s) {
 
-            if (s>0) {
-                s = s-1
-                if (s<10) {
-                    seconds.value = "0"+s;
-                } 
-                else {
-                    seconds.value = s;
-                }  
-            } 
-            else if (s==0) {
-                s = 60
-                s = s-1
-                if (s<10) {
-                    seconds.value = "0"+s;
-                } 
-                else {
-                    seconds.value = s;
-                }  
-            } 
-        }
-    }
-    console.log(h)
-    if (s>0) {
-        s = s-1
-        if (s<10) {
-            seconds.value = "0"+s;
+        if(s) {
+            hours.value = h
+            minutes.value = m
+            s -= 1
+            seconds.value = s
         } 
-        else {
-            seconds.value = s;
+        else if(m) {
+            hours.value = h
+            m -= 1
+            minutes.value = m
+            s = 59
+            seconds.value = s
+        } 
+        else if(h) {
+            h -= 1
+            hours.value = h
+            m = 59
+            minutes.value = m
+            s = 59
+            seconds.value = s
         }
-        if(s==0) {
-            window.alert("Time up")
-        }     
-    } 
-    
-    
+
+    }
 }
 
 function startTime () {
-    if (seconds.value || minutes.value || hours.value) {
+    let s = parseInt(seconds.value)
+    let m = parseInt(minutes.value);
+    let h = parseFloat(hours.value);
+
+    if (h||m||s) {
+        if (timer !== null) {
+            clearInterval(timer)
+        }
         timer = setInterval(countdown, 1000) 
     } 
     else {
@@ -61,16 +53,14 @@ function startTime () {
 }
 
 function resetTime() {
-    let h = hours.value;
-    let m = minutes.value;
-    let s = seconds.value;    
+    hours.value = "00";
+    minutes.value = "00";
+    seconds.value = "00";    
     
-    
-    console.log(h,m,s)
+    clearInterval(timer)
 }
 
-
-// let h = hours.value;
-// let m = minutes.value;
-// let s = seconds.value;
+function pauseTime() {
+    clearInterval(timer)
+}
 

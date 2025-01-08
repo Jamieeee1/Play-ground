@@ -16,47 +16,53 @@
 
 // for minutes and seconds
 
+let h = 1
 let m = 2
-let s = 0
-function start () {
-    
-    if (m||s) {
+let s = 7
 
-        if(m) {
-           // m-=1
-           if(m&&s) {
-               console.log("Current M: "+m);
-           } else if (m>1){
-                console.log("Current M: "+m);
-           }
-            if (s){
-                s -= 1
-                console.log("Current s:" + s)
-                if (s==0) {
-                    m -= 1
-                    if(m==0) {
-                        s = 59
-                        console.log("Current s:" + s)
-                    } else {
-                        console.log("Current M: "+m)
-                    }
-                    
-                };
-            } else {
-                m -= 1
-                s = 60
-                s -= 1
-                console.log("Current s:" + s)
-            }
+function start () {
+    //for minutes and seconds only
+    // if (m||s) {
+
+    //      if(s) {
+    //         s-=1
+    //         console.log("Current s:" + s)
+    //     } else {
+    //         m -= 1
+    //         console.log("Current M: "+m);
+    //         s = 59
+    //         console.log("Current s:" + s)
+    //     }
+    // }
+
+
+    //for 
+    if (h||m||s) {
+        if(s) {
+            console.log("Current H: " + h)
+            console.log("Current M: "+ m)
+            s -= 1
+            console.log("Current S: " + s)
+        } else if(m) {
+            console.log("Current H: " + h)
+            m -= 1
+            console.log("Current M: "+ m)
+            s = 59
+            console.log("Current S: " + s)
+        } else if(h) {
+            h -= 1
+            console.log("Current H: " + h)
+            m = 59
+            console.log("Current M: " + m)
+            s = 59
+            console.log("Current S: " + s)
         }
-        else if (!m) {
-            console.log("Current M: "+m)
-            if(s) {
-                s-=1 
-                console.log("Current s:" + s)
-            }
-        }
+
     }
+
+
+
+
 }
 
 function countdown () {
