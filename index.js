@@ -50,6 +50,7 @@ function startTime () {
     else {
         window.alert("Input valid number of seconds")
     }
+    document.getElementById('startbtn').innerText = 'Start'
 }
 
 function resetTime() {
@@ -62,5 +63,6 @@ function resetTime() {
 
 function pauseTime() {
     clearInterval(timer)
+    document.getElementById('startbtn').innerText = 'Resume'
 }
 

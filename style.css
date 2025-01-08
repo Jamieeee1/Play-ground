@@ -30,12 +30,18 @@ body {
 .stopwatch {
     display: flex;
     flex-direction: column;
+    align-content: center;
+    justify-content: center;
     gap: 1rem;
+
     width: 80%;
     max-width: 550px;
     height: max-content;
+
     background-color: #Ce9dd9;
+
     margin: 200px auto auto auto;
+    border-radius: 2.5rem;
 }
 
 .stopwatch h1 {
@@ -55,6 +61,7 @@ body {
 .input {
     margin-left: 10px;
     display: flex;
+    justify-content: space-evenly;
 }
 
 .input input{
@@ -81,10 +88,16 @@ body {
 }
 
 .buttons button {
-    height: 40px;
+    height: 50px;
+    border-radius: 50%;
     cursor: pointer;
-    border-radius: 20px;
 
+}
+
+.buttons button:hover {
+    transform: scale(1.2);
+    transition-delay: 0.1s;
+    background: #600774;
 }
 
 .display {
